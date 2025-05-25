@@ -1,0 +1,57 @@
+global:
+  domain: argocd.home.kevinbreit.net
+configs:
+  params:
+    server.insecure: true
+server:
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: true
+extraObjects:
+  - apiVersion: traefik.containo.us/v1alpha1
+    kind: IngressRoute
+    metadata:
+      name: argocd
+      namespace: argocd
+    spec:
+      entryPoints:
+        - websecure
+      routes:
+        - kind: Rule
+          match: Host(`argocd.home.kevinbreit.net`)
+          priority: 10
+          services:
+            - name: argocd-server
+              port: 80
+        - kind: Rule
+          match: Host(`argocd.home.kevinbreit.net`) && Headers(`Content-Type`, `application/grpc`)
+          priority: 11
+          services:
+            - name: argocd-server
+              port: 80
+              scheme: h2c
+      tls:
+        secretName: argocd-tls
+  - apiVersion: argoproj.io/v1alpha1
+    kind: ApplicationSet
+    metadata:
+      name: infra
+      namespace: argocd
+    spec:
+      goTemplate: true
+      goTemplateOptions: ["missingkey=error"]
+      generators:
+        - clusters: {} # Automatically use all clusters defined within Argo CD
+      template:
+        metadata:
+          name: "{{.name}}-infra" # 'name' field of the Secret
+        spec:
+          project: "default"
+          source:
+            repoURL: https://github.com/argoproj/argocd-example-apps/
+            targetRevision: HEAD
+            path: guestbook
+          destination:
+            server: "{{.server}}" # 'server' field of the secret
+            namespace: guestbook
