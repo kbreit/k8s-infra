@@ -59,3 +59,6 @@ extraObjects:
           destination:
             server: "https://kubernetes.default.svc"
             namespace: argocd
+          automated:
+            prune: true
+            selfHeal: true
