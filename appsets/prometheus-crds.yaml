@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: prometheus-operator-crds
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: "{{.name}}-prometheus-crds"
+      annotations:
+        name: "{{.name}}prometheus-crds"
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/kbreit/k8s-infra/
+        targetRevision: HEAD
+        path: infra/prometheus-operator-crds
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: kube-system
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
