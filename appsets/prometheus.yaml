@@ -23,5 +23,7 @@ spec:
         server: "https://kubernetes.default.svc"
         namespace: prometheus-stack
       syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
         automated:
           prune: true
