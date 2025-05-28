@@ -22,6 +22,9 @@ spec:
       destination:
         server: "https://kubernetes.default.svc"
         namespace: prometheus-stack
+      orphanedResources:
+        warn: false
+        ignore: true
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
