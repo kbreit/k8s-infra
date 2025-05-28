@@ -28,3 +28,4 @@ spec:
           - Replace=true
         automated:
           prune: true
+          selfHeal: true
