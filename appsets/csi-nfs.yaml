@@ -21,6 +21,7 @@ spec:
         path: infra/storage
       destination:
         server: "https://kubernetes.default.svc"
-        namespace: argocd
+        namespace: kube-system
       syncPolicy:
-        automated: {}
+        automated:
+          prune: true
