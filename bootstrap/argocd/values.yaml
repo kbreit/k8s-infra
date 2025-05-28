@@ -1,5 +1,7 @@
 global:
   domain: argocd.home.kevinbreit.net
+  logging:
+    level: debug
 configs:
   params:
     server.insecure: true
@@ -30,7 +32,7 @@ extraObjects:
           services:
             - name: argocd-server
               port: 80
-              scheme: h2c
+              scheme: http
       tls:
         secretName: argocd-tls
   - apiVersion: argoproj.io/v1alpha1
@@ -42,16 +44,18 @@ extraObjects:
       goTemplate: true
       goTemplateOptions: ["missingkey=error"]
       generators:
-        - clusters: {} # Automatically use all clusters defined within Argo CD
+        - clusters: {}
       template:
         metadata:
-          name: "{{.name}}-infra" # 'name' field of the Secret
+          name: "{{`{{.name}}`}}-infra"
+          annotations:
+            name: "{{`{{.name}}`}}-infra"
         spec:
           project: "default"
           source:
-            repoURL: https://github.com/argoproj/argocd-example-apps/
+            repoURL: https://github.com/kbreit/k8s-infra/
             targetRevision: HEAD
-            path: guestbook
+            path: infra/apps
           destination:
-            server: "{{.server}}" # 'server' field of the secret
-            namespace: guestbook
+            server: "https://kubernetes.default.svc"
+            namespace: argocd
