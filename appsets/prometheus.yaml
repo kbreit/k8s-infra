@@ -22,8 +22,6 @@ spec:
         helm:
           ignoreMissingValuesFiles: true
           releaseName: kube-prometheus-stack
-          valueFiles:
-            - infra/prometheus/values.yaml
       destination:
         server: "https://kubernetes.default.svc"
         namespace: prometheus-stack
