@@ -1,12 +1,13 @@
 crds:
   enabled: false
-prometheusSpec:
-  storageSpec:
-    volumeClaimTemplate:
-      spec:
-        storageClassName: nfs-csi-retain
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 25Gi
-      selector: {}
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: nfs-csi-retain
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 25Gi
+        selector: {}
