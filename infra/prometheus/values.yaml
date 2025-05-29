@@ -1,7 +1,7 @@
 crds:
   enabled: false
 prometheus:
-  enabled: false
+  enabled: true
   prometheusSpec:
     storageSpec:
       volumeClaimTemplate:
