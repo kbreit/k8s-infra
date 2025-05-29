@@ -1,13 +1,14 @@
-crds:
-  enabled: false
-prometheus:
-  enabled: true
-  prometheusSpec:
-    storageSpec:
-      volumeClaimTemplate:
-        spec:
-          storageClassName: nfs-csi-retain
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 25Gi
+kube-prometheus-stack:
+  crds:
+    enabled: false
+  prometheus:
+    enabled: true
+    prometheusSpec:
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: nfs-csi-retain
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 25Gi
