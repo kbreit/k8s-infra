@@ -1,8 +1,10 @@
 csi-driver-nfs:
   image:
     livenessProbe:
-      tag: v4.10.0
+      tag: v2.15.0
     nfs:
       tag: v4.10.0
     nodeDriverRegistrar:
+      tag: v4.10.0
+    csiProvisioner:
       tag: v4.10.0
