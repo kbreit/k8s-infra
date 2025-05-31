@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus
+  namespace: prometheus-stack
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`prometheus.home.kevinbreit.net`)
+      priority: 10
+      services:
+        - name: prometheus-server
+          port: 9090
+  tls:
+    secretName: prometheus-tls
