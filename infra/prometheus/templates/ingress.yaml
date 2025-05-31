@@ -1,17 +1,19 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: prometheus
   namespace: prometheus-stack
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - kind: Rule
-      match: Host(`prometheus.home.kevinbreit.net`)
-      priority: 10
-      services:
-        - name: kube-prometheus-stack-prometheus
-          port: 9090
-  tls:
-    secretName: prometheus-tls
+  ingressClassName: traefik
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kube-prometheus-stack-prometheus
+                port:
+                  number: 9090
