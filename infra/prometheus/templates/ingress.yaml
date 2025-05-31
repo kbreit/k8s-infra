@@ -11,7 +11,7 @@ spec:
       match: Host(`prometheus.home.kevinbreit.net`)
       priority: 10
       services:
-        - name: prometheus-server
+        - name: kube-prometheus-stack-prometheus
           port: 9090
   tls:
     secretName: prometheus-tls
