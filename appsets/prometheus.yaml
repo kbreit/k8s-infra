@@ -20,7 +20,6 @@ spec:
         targetRevision: HEAD
         path: infra/prometheus
         helm:
-          ignoreMissingValuesFiles: true
           releaseName: kube-prometheus-stack
       destination:
         server: "https://kubernetes.default.svc"
