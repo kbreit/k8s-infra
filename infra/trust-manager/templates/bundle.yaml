@@ -25,3 +25,6 @@ spec:
         key: "bundle.jks"
       pkcs12:
         key: "bundle.p12"
+    namespaceSelector:
+      matchLabels:
+        trust-manager.io/inject: "true"
