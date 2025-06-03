@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: trust-manager
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: "{{.name}}-trust-manager"
+      annotations:
+        name: "{{.name}}-trust-manager"
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/kbreit/k8s-infra/
+        targetRevision: HEAD
+        path: infra/trust-manager
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: trust-manager
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - Replace=false
+          - ServerSideApply=true
+        automated:
+          prune: true
+          selfHeal: true
