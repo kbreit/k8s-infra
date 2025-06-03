@@ -1,0 +1,26 @@
+apiVersion: trust.cert-manager.io/v1alpha1
+kind: Bundle
+metadata:
+  name: home.kevinbreit.net
+spec:
+  sources:
+    - useDefaultCAs: true
+    - secret:
+        name: "intermediate"
+        key: "ca.crt"
+    - secret:
+        name: "root"
+        key: "ca.crt"
+  target:
+    configMap:
+      key: root-certs.pem
+      metadata:
+        annotations:
+          argocd.argoproj.io/sync-wave: "1"
+        labels:
+          app.kubernetes.io/component: "trust-bundle"
+    additionalFormats:
+      jks:
+        key: "bundle.jks"
+      pkcs12:
+        key: "bundle.p12"
