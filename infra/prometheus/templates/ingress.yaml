@@ -21,3 +21,4 @@ spec:
   tls:
     - hosts:
         - prometheus.home.kevinbreit.net
+      secretName: prometheus-cert
