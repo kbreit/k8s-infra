@@ -17,7 +17,7 @@ spec:
               service:
                 name: kube-prometheus-stack-grafana
                 port:
-                  number: 9090
+                  number: 80
   tls:
     - hosts:
         - grafana.home.kevinbreit.net
