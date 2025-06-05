@@ -19,8 +19,6 @@ spec:
         repoURL: https://github.com/kbreit/k8s-infra/
         targetRevision: HEAD
         path: infra/grafana-dashboards
-        helm:
-          releaseName: grafana-dashboards
       destination:
         server: "https://kubernetes.default.svc"
         namespace: grafana-dashboards
