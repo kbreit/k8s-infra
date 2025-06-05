@@ -3,11 +3,13 @@ kind: ServiceMonitor
 metadata:
   name: traefik
 spec:
+  endpoints:
+    - interval: 30s
+      path: /metrics
+      port: web
   selector:
     matchLabels:
       app.kubernetes.io/name: traefik
   namespaceSelector:
     matchNames:
       - kube-system
-  endpoints:
-    - port: web
