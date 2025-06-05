@@ -245,7 +245,7 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "sum(rate(traefik_entrypoint_requests_total{entrypoint=~\"$entrypoint\"}[$interval])) by (entrypoint)",
+              "expr": "sum(rate(traefik_entrypoint_requests_total{entrypoint!=\"\"}[$interval])) by (entrypoint)",
               "legendFormat": "{{entrypoint}}",
               "range": true,
               "refId": "A"
