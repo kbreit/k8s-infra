@@ -20,8 +20,7 @@ kube-prometheus-stack:
   prometheus:
     enabled: true
     prometheusSpec:
-      podMonitorSelector: {}
-      podMonitorNamespaceSelector: {}
+      podMonitorSelectorNilUsesHelmValues: false
       storageSpec:
         volumeClaimTemplate:
           spec:
