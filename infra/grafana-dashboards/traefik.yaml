@@ -343,7 +343,7 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "(sum(rate(traefik_entrypoint_request_duration_seconds_bucket{le=\"0.3\",code=\"200\",entrypoint=~\"$entrypoint\"}[$interval])) by (method) + \n sum(rate(traefik_entrypoint_request_duration_seconds_bucket{le=\"1.2\",code=\"200\",entrypoint=~\"$entrypoint\"}[$interval])) by (method)) / 2 / \n sum(rate(traefik_entrypoint_request_duration_seconds_count{code=\"200\",entrypoint=~\"$entrypoint\"}[$interval])) by (method)\n",
+              "expr": "(sum(rate(traefik_entrypoint_request_duration_seconds_bucket{le=\"0.3\",code=\"200\",entrypoint!=\"\"}[$interval])) by (method) + \n sum(rate(traefik_entrypoint_request_duration_seconds_bucket{le=\"1.2\",code=\"200\",entrypoint!=\"\"}[$interval])) by (method)) / 2 / \n sum(rate(traefik_entrypoint_request_duration_seconds_count{code=\"200\",entrypoint!=\"\"}[$interval])) by (method)\n",
               "legendFormat": "{{method}}",
               "range": true,
               "refId": "A"
