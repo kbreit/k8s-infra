@@ -6,5 +6,8 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: traefik
+  namespaceSelector:
+    matchNames:
+      - kube-system
   endpoints:
     - port: web
