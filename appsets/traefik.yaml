@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: traefik
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: "{{.name}}-traefik"
+      annotations:
+        name: "{{.name}}-traefik"
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/kbreit/k8s-infra/
+        targetRevision: HEAD
+        path: infra/traefik
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: traefik
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - Replace=false
+          - ServerSideApply=true
+        automated:
+          prune: true
+          selfHeal: true
