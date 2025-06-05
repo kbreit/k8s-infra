@@ -9,7 +9,8 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - http:
+    - host: grafana.home.kevinbreit.net
+      http:
         paths:
           - path: /
             pathType: Prefix
