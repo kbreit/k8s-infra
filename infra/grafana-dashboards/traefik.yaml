@@ -1581,3 +1581,5 @@ data:
 kind: ConfigMap
 metadata:
   name: traefik
+  labels:
+    grafana_dashboard: "1"
