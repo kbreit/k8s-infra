@@ -29,3 +29,11 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 25Gi
+  alertmanager:
+    alertmanagerSpec:
+      alertmanagerConfigSelector:
+        matchExpressions:
+          - key: alertconfig
+            operator: In
+            values:
+              - enabled
