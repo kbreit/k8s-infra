@@ -32,6 +32,7 @@ kube-prometheus-stack:
                 storage: 25Gi
   alertmanager:
     alertmanagerSpec:
+      externalUrl: alertmanager.home.kevinbreit.net
       alertmanagerConfigSelector:
         matchExpressions:
           - key: alertconfig
