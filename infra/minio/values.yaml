@@ -15,6 +15,17 @@ minio:
       - secretName: minio-tls
         hosts:
           - minio.home.kevinbreit.net
+  consoleIngress:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: ca-issuer
+    hosts:
+      - minio-ui.home.kevinbreit.net
+    tls:
+      - secretName: minio-ui-tls
+        hosts:
+          - minio-ui.home.kevinbreit.net
   resources:
     requests:
       memory: 8Gi
