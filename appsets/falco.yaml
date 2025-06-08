@@ -21,7 +21,7 @@ spec:
         path: infra/falco
       destination:
         server: "https://kubernetes.default.svc"
-        namespace: kube-system
+        namespace: falco
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
