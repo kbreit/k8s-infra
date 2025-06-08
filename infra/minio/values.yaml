@@ -8,7 +8,8 @@ minio:
     ingressClassName: traefik
     annotations:
       cert-manager.io/cluster-issuer: ca-issuer
-    hosts: minio.home.kevinbreit.net
+    hosts:
+      - minio.home.kevinbreit.net
     tls:
       - secretName: minio-tls
         hosts:
