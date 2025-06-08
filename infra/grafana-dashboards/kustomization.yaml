@@ -4,3 +4,4 @@ namespace: prometheus-stack
 resources:
   - ./traefik.yaml
   - ./falco.yaml
+  - ./falco2.yaml
