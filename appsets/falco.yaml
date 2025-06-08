@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: falco
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: "{{.name}}-falco"
+      annotations:
+        name: "{{.name}}-falco"
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/kbreit/k8s-infra/
+        targetRevision: HEAD
+        path: infra/falco
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: kube-system
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
