@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: email-config
+  namespace: prometheus-stack
+  labels:
+    alertconfig: enabled
+spec:
+  route:
+    groupBy: ["job"]
+    groupWait: 30s
+    groupInterval: 5s
+    repeatInterval: 12h
+    receiver: "email"
+  receivers:
+    - name: "email"
+      emailConfigs:
+        - from: "alertmanager@home.kevinbreit.net"
+          to: "alerts@kevinbreit.net"
+          text: "There is a problem"
+          authUsername: kbreit@fastmail.fm
+          authPassword:
+            name: fastmail-secret
+            key: token
+          smarthost: smtp.fastmail.com:587
