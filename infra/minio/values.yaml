@@ -1,4 +1,5 @@
 minio:
+  replicas: 4
   persistence:
     enabled: true
     storageClass: nfs-csi-retain
