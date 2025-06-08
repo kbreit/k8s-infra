@@ -1,0 +1,18 @@
+minio:
+  persistence:
+    enabled: true
+    storageClass: nfs-csi-retain
+    size: 100Gi
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: ca-issuer
+    hosts: minio.home.kevinbreit.net
+    tls:
+      - secretName: minio-tls
+        hosts:
+          - minio.home.kevinbreit.net
+  resources:
+    requests:
+      memory: 8Gi
