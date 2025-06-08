@@ -13,5 +13,8 @@ loki:
           index:
             prefix: loki_index_
             period: 24h
+    deploymentMode: SingleBinary
+    singleBinary:
+      replicas: 1
     minio:
       enabled: false
