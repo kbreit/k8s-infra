@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: loki
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: "{{.name}}-loki"
+      annotations:
+        name: "{{.name}}-loki"
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/kbreit/k8s-infra/
+        targetRevision: HEAD
+        path: infra/loki
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: loki
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - Replace=false
+          - ServerSideApply=true
+        automated:
+          prune: true
+          selfHeal: true
