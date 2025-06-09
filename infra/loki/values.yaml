@@ -18,3 +18,5 @@ loki:
     replicas: 1
   minio:
     enabled: false
+  enterprise:
+    enabled: false
