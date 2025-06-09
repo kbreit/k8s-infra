@@ -42,4 +42,4 @@ kube-prometheus-stack:
     additionalDataSources:
       - name: loki
         type: loki
-        url: http://in-cluster-loki.loki.default.cluster.local:3100
+        url: http://in-cluster-loki.loki.svc.cluster.local:3100
