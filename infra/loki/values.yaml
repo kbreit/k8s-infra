@@ -2,8 +2,8 @@ loki:
   loki:
     crds:
       enabled: true
-    # commonConfig:
-    #   replication_factor: 1
+    commonConfig:
+      replication_factor: 1
     schemaConfig:
       configs:
         - from: 2024-04-01
@@ -13,8 +13,8 @@ loki:
           index:
             prefix: loki_index_
             period: 24h
-    # deploymentMode: SingleBinary
-    # singleBinary:
-    #   replicas: 1
-    # minio:
-    #   enabled: false
+  deploymentMode: SingleBinary
+  singleBinary:
+    replicas: 1
+  minio:
+    enabled: false
