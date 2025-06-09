@@ -38,3 +38,8 @@ kube-prometheus-stack:
             operator: In
             values:
               - enabled
+  grafana:
+    additionalDataSources:
+      - name: loki
+        type: loki
+        url: http://in-cluster-loki.loki.default.cluster.local:3100
