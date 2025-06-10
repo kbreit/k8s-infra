@@ -1,8 +1,8 @@
 apiVersion: v1
-name: backtsage
+name: backstage
 version: v0.0.0
 appVersion: v1.17.2
 dependencies:
-  - name: backtsage
+  - name: backstage
     repository: https://backstage.github.io/charts
     version: 2.5.2
