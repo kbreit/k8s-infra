@@ -7,7 +7,11 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-    - clusters: {}
+    - matrix:
+        - clusters:
+            selector:
+              matchLabels:
+                trust-manager-enabled: "true"
   template:
     metadata:
       name: "{{.name}}-trust-manager"
