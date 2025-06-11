@@ -30,10 +30,10 @@ kube-prometheus-stack:
               requests:
                 storage: 25Gi
       additionalScrapeConfigs:
-        - job_name: node
+        - job_name: node-exporter
           metrics_path: "/metrics"
           static_configs:
-          - targets: ["192.168.15.16:9100"]
+            - targets: ["192.168.15.16:9100"]
   alertmanager:
     alertmanagerSpec:
       # externalUrl: alertmanager.home.kevinbreit.net
