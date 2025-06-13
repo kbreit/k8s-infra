@@ -1,7 +1,8 @@
 falco:
-  containerd:
-    enabled: true
-    socket: /run/k3s/containerd/containerd.sock
+  collectors:
+    containerd:
+      enabled: true
+      socket: /run/k3s/containerd/containerd.sock
   metrics:
     enabled: true
     service:
