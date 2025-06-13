@@ -5,3 +5,5 @@ falco:
       configMaps:
         falco:
           namespace: prometheus-stack
+  serviceMonitor:
+    create: true
