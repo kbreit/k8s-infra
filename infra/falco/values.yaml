@@ -47,10 +47,10 @@ falco:
             values:
               - [kustomize-contr, /usr/local/bin/kustomize-controller]
           - name: loki-fluent-bit
-            fields: [process, proc_exepath, k8s_ns_name]
-            comps: [=, =, =]
+            fields: [proc_exepath, k8s_ns_name]
+            comps: [=, =]
             values:
-              - [fluent-bit, /fluent-bit/bin/fluent-bit, loki]
+              - [/fluent-bit/bin/fluent-bit, loki]
           - name: flux
             fields: [process, proc_exepath]
             comps: [=, =]
