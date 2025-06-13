@@ -1,5 +1,7 @@
 falco:
-  falcosidekick:
-    enabled: true
-    webui:
+  grafana:
+    dashboards:
       enabled: true
+      configMaps:
+        falco:
+          namespace: prometheus-stack
