@@ -1,4 +1,8 @@
 falco:
+  metrics:
+    enabled: true
+    service:
+      create: true
   grafana:
     dashboards:
       enabled: true
