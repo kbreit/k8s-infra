@@ -15,7 +15,7 @@ falco:
     labels:
       release: kube-prometheus-stack
   customRules:
-    rules-exceptions.yaml:
+    rules-exceptions.yaml: |-
       - rule: Contact K8S API Server From Container
         desc: >
           Detect attempts to communicate with the K8S API Server from a container by non-profiled users. Kubernetes APIs play a
