@@ -61,7 +61,7 @@ falco:
             comps: [=, =]
             values:
               - [quay.io/kiwigrid/k8s-sidecar, prometheus-stack]
-          - arc-sync-agent
+          - name: arc-sync-agent
             fields: [container_image_repository, k8s_ns_name]
             comps: [=, =]
             values:
