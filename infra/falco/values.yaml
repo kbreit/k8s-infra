@@ -7,3 +7,5 @@ falco:
           namespace: prometheus-stack
   serviceMonitor:
     create: true
+    labels:
+      release: kube-prometheus-stack
