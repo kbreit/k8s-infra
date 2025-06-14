@@ -41,6 +41,11 @@ falco:
             comps: [=, =]
             values:
               - [kustomize-contr, argocd-applicat]
+          - name: argocd-server
+            fields: [process,k8s_ns_name]
+            comps: [=, =]
+            values:
+              - [argocd-server, argocd]
           - name: flux-image-updater
             fields: [process, proc_exepath]
             comps: [=, =]
@@ -71,6 +76,11 @@ falco:
             comps: [=, =]
             values:
               - ["mcr.microsoft.com/azurearck8s/kube-aad-proxy" ,azure_arc]
+          - name: arc-metrics-agent
+            fields: [container_image_repository, k8s_ns_name]
+            comps: [=, =]
+            values:
+              - ["mcr.microsoft.com/azurearck8s/metrics-agent" ,azure_arc]
         output: Unexpected connection to K8s API Server from container | connection=%fd.name lport=%fd.lport rport=%fd.rport fd_type=%fd.type fd_proto=%fd.l4proto evt_type=%evt.type user=%user.name user_uid=%user.uid user_loginuid=%user.loginuid process=%proc.name proc_exepath=%proc.exepath parent=%proc.pname command=%proc.cmdline terminal=%proc.tty
         priority: NOTICE
         tags: [maturity_stable, container, network, k8s, mitre_discovery, T1565]
