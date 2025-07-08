@@ -16,6 +16,10 @@ Cilium is used for the CNI and service mesh. The repository assumes it is instal
 
 Note: Cilium is a new addition and while installable and operational it isn't fully configured.
 
+## ArgoCD
+
+Installing ArgoCD in this environment is probably a 2 step process. First, install the CRDs, then Argo.
+
 TODO:
 
 - Add applications

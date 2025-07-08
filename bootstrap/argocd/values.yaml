@@ -2,6 +2,8 @@ global:
   domain: argocd.home.kevinbreit.net
   logging:
     level: debug
+crds:
+  install: true
 configs:
   params:
     server.insecure: true
