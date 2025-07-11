@@ -1,0 +1,17 @@
+kubeProxyReplacement: true
+hubble:
+  enabled: true
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+l2announcements:
+  enabled: true
+externalIPs:
+  enabled: true
+ingressController:
+  enabled: true
+  default: true
+  loadbalancerMode: shared
+k8sServiceHost: 192.168.15.145
+k8sServicePort: 6443

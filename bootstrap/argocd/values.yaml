@@ -14,32 +14,32 @@ server:
     enabled: true
     annotations:
       "cert-manager.io/cluster-issuer": "ca-issuer"
-    tls: true
-extraObjects:
-  - apiVersion: argoproj.io/v1alpha1
-    kind: ApplicationSet
-    metadata:
-      name: infra
-      namespace: argocd
-    spec:
-      goTemplate: true
-      goTemplateOptions: ["missingkey=error"]
-      generators:
-        - clusters: {}
-      template:
-        metadata:
-          name: "{{`{{.name}}`}}-infra"
-          annotations:
-            name: "{{`{{.name}}`}}-infra"
-        spec:
-          project: "default"
-          source:
-            repoURL: https://github.com/kbreit/k8s-infra/
-            targetRevision: HEAD
-            path: appsets
-          destination:
-            server: "https://kubernetes.default.svc"
-            namespace: argocd
-          automated:
-            prune: true
-            selfHeal: true
+    # tls: true
+# extraObjects:
+#   - apiVersion: argoproj.io/v1alpha1
+#     kind: ApplicationSet
+#     metadata:
+#       name: infra
+#       namespace: argocd
+#     spec:
+#       goTemplate: true
+#       goTemplateOptions: ["missingkey=error"]
+#       generators:
+#         - clusters: {}
+#       template:
+#         metadata:
+#           name: "{{`{{.name}}`}}-infra"
+#           annotations:
+#             name: "{{`{{.name}}`}}-infra"
+#         spec:
+#           project: "default"
+#           source:
+#             repoURL: https://github.com/kbreit/k8s-infra/
+#             targetRevision: HEAD
+#             path: appsets
+#           destination:
+#             server: "https://kubernetes.default.svc"
+#             namespace: argocd
+#           automated:
+#             prune: true
+#             selfHeal: true

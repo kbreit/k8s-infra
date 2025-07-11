@@ -1,0 +1,11 @@
+apiVersion: cilium.io/v2alpha1
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: nginx-ingress
+spec:
+  blocks:
+    - cidr: 192.168.15.95/32
+  disabled: false
+  serviceSelector:
+    matchLabels:
+      cilium.io/ingress: "true"
