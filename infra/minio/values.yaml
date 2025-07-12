@@ -6,7 +6,7 @@ minio:
     size: 100Gi
   ingress:
     enabled: true
-    ingressClassName: traefik
+    ingressClassName: cilium
     annotations:
       cert-manager.io/cluster-issuer: ca-issuer
     hosts:
@@ -17,7 +17,7 @@ minio:
           - minio.home.kevinbreit.net
   consoleIngress:
     enabled: true
-    ingressClassName: traefik
+    ingressClassName: cilium
     annotations:
       cert-manager.io/cluster-issuer: ca-issuer
     hosts:
