@@ -14,7 +14,7 @@ server:
     enabled: true
     annotations:
       "cert-manager.io/cluster-issuer": "ca-issuer"
-    # tls: true
+    tls: true
 # extraObjects:
 #   - apiVersion: argoproj.io/v1alpha1
 #     kind: ApplicationSet
