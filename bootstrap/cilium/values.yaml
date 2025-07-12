@@ -5,6 +5,22 @@ hubble:
     enabled: true
   ui:
     enabled: true
+  metrics:
+    enabled:
+      - dns:query;ignoreAAAA
+      - drop
+      - tcp
+      - flow
+      - icmp
+      - http
+    serviceMonitor:
+      enabled: true
+      namespace: prometheus-stack
+      labels:
+        release: kube-prometheus-stack
+    dashboards:
+      enabled: true
+      namespace: prometheus-stack
 l2announcements:
   enabled: true
 externalIPs:
@@ -15,3 +31,24 @@ ingressController:
   loadbalancerMode: shared
 k8sServiceHost: 192.168.15.145
 k8sServicePort: 6443
+prometheus:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    namespace: prometheus-stack
+    labels:
+      release: kube-prometheus-stack
+operator:
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: prometheus-stack
+      labels:
+        release: kube-prometheus-stack
+  dashboards:
+    enabled: true
+    namespace: prometheus-stack
+dashboards:
+  enabled: true
+  namespace: prometheus-stack
