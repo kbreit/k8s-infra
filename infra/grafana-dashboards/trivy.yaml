@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  trivy.json: 17813_rev2.json
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: trivy
+  namespace: prometheus-stack
