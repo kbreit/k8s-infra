@@ -1,4 +1,4 @@
-trivy:
+trivy-operator:
   serviceMonitor:
     enabled: true
   service:
