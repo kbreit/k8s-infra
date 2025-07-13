@@ -3,6 +3,7 @@ data:
   trivy.json: 17813_rev2.json
 kind: ConfigMap
 metadata:
-  creationTimestamp: null
   name: trivy
   namespace: prometheus-stack
+  labels:
+    grafana_dashboard: 1
