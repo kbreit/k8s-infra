@@ -1357,6 +1357,7 @@ data:
     }
 kind: ConfigMap
 metadata:
-  creationTimestamp: null
   name: trivy
   namespace: prometheus-stack
+  labels:
+    grafana_dashboard: "1"
