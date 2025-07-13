@@ -2,5 +2,7 @@ trivy-operator:
   serviceMonitor:
     enabled: true
     namespace: prometheus-stack
+    labels:
+      release: kube-prometheus-stack
   service:
     headless: false
