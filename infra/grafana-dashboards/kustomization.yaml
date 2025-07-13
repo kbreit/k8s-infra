@@ -4,4 +4,3 @@ namespace: prometheus-stack
 resources:
   - ./trivy.yaml
   - ./falco.yaml
-  - ./falco2.yaml
