@@ -1,5 +1,6 @@
 trivy-operator:
   serviceMonitor:
     enabled: true
+    namespace: prometheus-stack
   service:
     headless: false
