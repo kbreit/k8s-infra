@@ -51,7 +51,7 @@ falco:
             values:
               - [kustomize-contr, /usr/local/bin/kustomize-controller]
           - name: loki-fluent-bit
-            fields: [proc_exepath, k8s_ns_name]
+            fields: [proc_exepath, k8s.ns.name]
             comps: [=, =]
             values:
               - [/fluent-bit/bin/fluent-bit, loki]
@@ -61,7 +61,7 @@ falco:
             values:
               - [kustomize-contr, /usr/local/bin/kustomize-controller]
           - name: prom-sidecar
-            fields: [container_image_repository, k8s_ns_name]
+            fields: [container_image_repository, k8s.ns.name]
             comps: [=, =]
             values:
               - ["quay.io/kiwigrid/k8s-sidecar", prometheus-stack]
