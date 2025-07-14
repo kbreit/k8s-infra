@@ -36,17 +36,17 @@ falco:
           and not user_known_contact_k8s_api_server_activities
         exceptions:
           - name: argocd
-            fields: [process, command]
+            fields: [proc.name, proc.cmdline]
             comps: [=, =]
             values:
               - [kustomize-contr, argocd-applicat]
           - name: argocd-server
-            fields: [process,k8s_ns_name]
+            fields: [proc.name,k8s_ns_name]
             comps: [=, =]
             values:
               - [argocd-server, argocd]
           - name: flux-image-updater
-            fields: [process, proc_exepath]
+            fields: [proc.name, proc_exepath]
             comps: [=, =]
             values:
               - [kustomize-contr, /usr/local/bin/kustomize-controller]
@@ -56,7 +56,7 @@ falco:
             values:
               - [/fluent-bit/bin/fluent-bit, loki]
           - name: flux
-            fields: [process, proc_exepath]
+            fields: [proc.name, proc_exepath]
             comps: [=, =]
             values:
               - [kustomize-contr, /usr/local/bin/kustomize-controller]
