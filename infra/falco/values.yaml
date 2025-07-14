@@ -41,22 +41,22 @@ falco:
             values:
               - [kustomize-contr, argocd-applicat]
           - name: argocd-server
-            fields: [proc.name,k8s.ns.name]
+            fields: [proc.name,k8s.ns.namo]
             comps: [=, =]
             values:
               - [argocd-server, argocd]
           - name: flux-image-updater
-            fields: [proc.name, proc_exepath]
+            fields: [proc.name, proc.exepath]
             comps: [=, =]
             values:
               - [kustomize-contr, /usr/local/bin/kustomize-controller]
           - name: loki-fluent-bit
-            fields: [proc_exepath, k8s.ns.name]
+            fields: [proc.exepath, k8s.ns.name]
             comps: [=, =]
             values:
               - [/fluent-bit/bin/fluent-bit, loki]
           - name: flux
-            fields: [proc.name, proc_exepath]
+            fields: [proc.name, proc.exepath]
             comps: [=, =]
             values:
               - [kustomize-contr, /usr/local/bin/kustomize-controller]
