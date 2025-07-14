@@ -34,7 +34,7 @@ falco:
           and k8s_api_server
           and not k8s_containers
           and not user_known_contact_k8s_api_server_activities
-        exception:
+        exceptions:
           - name: argocd
             fields: [process, command]
             comps: [=, =]
@@ -51,11 +51,6 @@ falco:
             values:
               - [kustomize-contr, /usr/local/bin/kustomize-controller]
           - name: loki-fluent-bit
-            fields: [proc_exepath, k8s_ns_name]
-            comps: [=, =]
-            values:
-              - [/fluent-bit/bin/fluent-bit, loki]
-          - name: fluent-bit
             fields: [proc_exepath, k8s_ns_name]
             comps: [=, =]
             values:
