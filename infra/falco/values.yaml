@@ -40,6 +40,11 @@ falco:
             comps: [=, =]
             values:
               - [kustomize-contr, argocd-applicat]
+          - name: argocd-applicat
+            fields: [proc.name, proc.cmdline]
+            comps: [=, =]
+            values:
+              - [argocd-applicat, argocd-applicat]
           - name: argocd-server
             fields: [proc.name,k8s.ns.name]
             comps: [=, =]
