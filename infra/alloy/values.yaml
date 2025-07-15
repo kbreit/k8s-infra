@@ -1,0 +1,7 @@
+loki-stack:
+  fluent-bit:
+    enabled: true
+  grafana:
+    enabled: false
+  promtail:
+    enabled: false

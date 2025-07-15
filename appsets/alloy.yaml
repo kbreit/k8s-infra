@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: alloy
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: "{{.name}}-alloy"
+      annotations:
+        name: "{{.name}}-alloy"
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/kbreit/k8s-infra/
+        targetRevision: HEAD
+        path: infra/alloy
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: alloy
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - Replace=false
+          - ServerSideApply=true
+        automated:
+          prune: true
+          selfHeal: true
