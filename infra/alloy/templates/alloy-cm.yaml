@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  config.alloy: |
+    logging {
+      level = "info"
+      format = "logfmt"
+    }
+    loki.write "default" {
+      endpoint {
+        url = "https://in-cluster-loki.svc.loki.cluster.local/loki/api/v1/push"
+      }
+    }
+
+kind: ConfigMap
+metadata:
+  name: alloy-config
+  namespace: alloy

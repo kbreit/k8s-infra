@@ -1,7 +1,7 @@
-loki-stack:
-  fluent-bit:
-    enabled: true
-  grafana:
-    enabled: false
-  promtail:
-    enabled: false
+alloy:
+  alloy:
+    configMap:
+      config:
+        create: false
+        name: alloy-config
+        key: config.alloy
