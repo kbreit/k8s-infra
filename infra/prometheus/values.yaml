@@ -55,3 +55,7 @@ kube-prometheus-stack:
       - name: loki
         type: loki
         url: http://in-cluster-loki.loki.svc.cluster.local:3100
+        jsonData:
+          httpHeaderName1: "X-Scope-OrgID"
+        secureJsonData:
+          httpHeaderValue1: "1"
