@@ -1,4 +1,4 @@
-loki-stack:
+loki:
   fluent-bit:
     enabled: true
   grafana:
