@@ -56,8 +56,11 @@ kube-prometheus-stack:
         type: loki
         url: http://in-cluster-loki-gateway.loki.svc.cluster.local:80
         access: proxy
-        orgId: 1
         basicAuth: false
         isDefault: false
         version: 1
         editable: false
+        jsonData:
+          httpHeaderName1: "X-Scope-OrgID"
+        secureJsonData:
+          httpHeaderValue1: "1"
