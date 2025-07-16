@@ -65,6 +65,11 @@ falco:
             comps: [=, =]
             values:
               - [kustomize-contr, /usr/local/bin/kustomize-controller]
+          - name: loki-python
+            fields: [proc.name, k8s.ns.name, k8s.pod.name]
+            comps: [=, =, =]
+            values:
+              - [python, loki, in-cluster-loki-0]
           - name: alloy
             fields: [proc.name, proc.exepath]
             comps: [=, =]
