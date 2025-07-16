@@ -8,7 +8,7 @@ data:
 
     loki.write "default" {
       endpoint {
-        url = "https://in-cluster-loki.svc.loki.cluster.local/loki/api/v1/push"
+        url = "http://in-cluster-loki-gateway.svc.loki.cluster.local/loki/api/v1/push"
       }
     }
 
