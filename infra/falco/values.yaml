@@ -65,6 +65,11 @@ falco:
             comps: [=, =]
             values:
               - [kustomize-contr, /usr/local/bin/kustomize-controller]
+          - name: alloy
+            fields: [proc.name, proc.exepath]
+            comps: [=, =]
+            values:
+              - [alloy, /usr/bin/alloy]
           - name: prom-sidecar
             fields: [container.image.repository, k8s.ns.name]
             comps: [=, =]
