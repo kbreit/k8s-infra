@@ -5,14 +5,11 @@ data:
       level = "info"
       format = "logfmt"
     }
+
     loki.write "default" {
       endpoint {
         url = "https://in-cluster-loki.svc.loki.cluster.local/loki/api/v1/push"
       }
-    }
-    logging {
-        level  = "info"
-        format = "logfmt"
     }
 
     discovery.kubernetes "pods" {
