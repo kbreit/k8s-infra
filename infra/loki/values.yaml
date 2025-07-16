@@ -19,7 +19,7 @@ loki:
     ruler:
       enable_api: true
   minio:
-    enabled: false
+    enabled: true
   deploymentMode: SingleBinary
   singleBinary:
     replicas: 1
