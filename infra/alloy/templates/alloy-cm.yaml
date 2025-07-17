@@ -62,6 +62,7 @@ data:
     }
 
     loki.process "cluster_events" {
+      forward_to = [loki.write.default.receiver]
       stage.static_labels {
         values = {
           cluster = "kbedge",
