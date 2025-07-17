@@ -53,6 +53,27 @@ data:
       forward_to = [loki.write.default.receiver]
     }
 
+    loki.source.kubernetes.events "cluster_events" {
+      job_name = "integrations/kubernetes/eventhandler"
+      log_format = "logfmt"
+      forward_to = [
+        loki.process.cluster_events.receiver,
+      ]
+    }
+
+    loki.process "cluster_events" {
+      stage.static_labels {
+        values = {
+          cluster = "kbedge",
+        } 
+      }
+      stage.labels {
+        values = {
+          kubernetes_cluster_events = "job",
+        }
+      }
+    }
+
     discovery.kubernetes "nodes" {
         role = "node"
     }
