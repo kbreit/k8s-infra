@@ -66,7 +66,6 @@ data:
       stage.static_labels {
         values = {
           cluster = "kbedge",
-          kind = "events",
         } 
       }
       stage.labels {
