@@ -39,6 +39,11 @@ data:
       }
     }
 
+    loki.source.kubernetes "pod_logs" {
+      targets = discovery.relabel.pod_logs.output
+      forward_to = [loki.process.pod_logs.receiver]
+    }
+
     loki.process "pod_logs" {
       stage.static_labels {
         values = {
@@ -46,11 +51,6 @@ data:
         }
       }
       forward_to = [loki.write.default.receiver]
-    }
-
-    loki.source.kubernetes "pod_logs" {
-      targets = discovery.relabel.pod_logs.output
-      forward_to = [loki.process.pod_logs.receiver]
     }
 
     loki.source.kubernetes.events "cluster_events" {
