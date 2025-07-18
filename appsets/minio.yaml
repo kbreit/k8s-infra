@@ -7,7 +7,10 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-    - clusters: {}
+    - clusters:
+        selector:
+          matchLabels:
+            minio: "true"
   template:
     metadata:
       name: "{{.name}}-minio"
